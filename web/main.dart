@@ -40,7 +40,7 @@ void main() {
     }
 
     // hash = hash.substring(1);
-    setState('Downloading file index...');
+    setState('<p class="text-gray-600">Downloading file index...</p>');
 
     final lengthSep = hash.indexOf('-');
 
@@ -59,7 +59,7 @@ void main() {
 
     final skylink = hash.substring(0, sep);
     final key = hash.substring(sep + 1);
-/* 
+/*
     print(skylink);
     print(key); */
 
@@ -77,7 +77,7 @@ void main() {
     FileList files = fileselect.files;
     if (files.length < 1) throw Exception(); // TODO
 
-    setState('Loading file...');
+    setState('<p class="text-gray-600">Loading file...</p>');
 
     File file = files.first;
 
@@ -129,7 +129,7 @@ void downloadAndDecrypt(
 
   final nonce = Nonce(cryptParts.sublist(32, 32 + 16));
 
-  setState('Decrypting file index...');
+  setState('<p class="text-gray-600">Decrypting file index...</p>');
 
   final decryptedChunkIndex = await cipher.decrypt(
     res.bodyBytes,
@@ -153,7 +153,7 @@ void downloadAndDecrypt(
 
   final info = '${metadata["filename"]} ($size) •';
 
-  setState('$info Downloading and decrypting chunk 1 of $totalChunks...');
+  setState('<p class="text-gray-600">$info Downloading and decrypting chunk 1 of $totalChunks...</p>');
 
   int iDone = 0;
 
@@ -191,7 +191,7 @@ void downloadAndDecrypt(
         downloadBlob(blob, metadata['filename']);
       } else {
         setState(
-            '$info Downloading and decrypting chunk ${currentI + 2} of $totalChunks...');
+            '<p class="text-gray-600">$info Downloading and decrypting chunk ${currentI + 2} of $totalChunks...</p>');
       }
       iDone++;
     });
@@ -207,7 +207,7 @@ void downloadAndDecrypt(
 }
 
 void downloadBlob(Blob blob, String filename) {
-  setState('<a id="downloadLink">Save File ${filename}</a>');
+  setState('<div class="flex justify-between"><a class="text-base leading-normal text-gray-800 py-2 px-4">${filename}</a><a id="downloadLink" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>Save File</a></div>');
 
   window.document.querySelector("#downloadLink")
     ..setAttribute('href', Url.createObjectUrlFromBlob(blob))
@@ -248,7 +248,7 @@ Stream<List<int>> encryptStreamInBlocks(Stream<List<int>> source,
 void encryptAndUpload(
   File file,
 ) async {
-  setState('Encrypting and uploading file...');
+  setState('<p class="text-gray-600">Encrypting and uploading file...</p>');
   // print(file.type);
 
   // Choose the cipher
@@ -289,7 +289,7 @@ void encryptAndUpload(
 
   print(chunkSkylinks);
 
-  setState('Encrypting and uploading chunk index...');
+  setState('<p class="text-gray-600">Encrypting and uploading chunk index...</p>');
 
   final links = await cipher.encrypt(
     utf8.encode(json.encode({
@@ -311,7 +311,7 @@ void encryptAndUpload(
   final link =
       '${window.location.protocol}//${window.location.host}${window.location.pathname}#b-$skylink+$secret';
 
-  setState('Secure Download Link for ${file.name}: <a href="$link">$link</a>');
+  setState('Secure Download Link for <span class="font-semibold">${file.name}</span>:<br><br><a class="text-base text-gray-600 leading-normal hover:underline" href="$link">$link</a>');
 }
 
 String getRandomPortal() {
@@ -326,7 +326,8 @@ Future<List<String>> uploadChunkedStreamToSkynet(
   print('send $uploaderFileId');
 
   setState(
-      'Encrypting and uploading first chunk... $totalChunks Chunks total (16 MB each)');
+
+      '<p class="text-gray-600">Encrypting and uploading first chunk... $totalChunks Chunks total (16 MB each)</p>');
 
   List<String> skylinks = List.generate(totalChunks, (index) => null);
 
@@ -350,7 +351,7 @@ Future<List<String>> uploadChunkedStreamToSkynet(
     skylinks[currentI] = skylink;
     i++;
     setState(
-        'Encrypting and uploading file... $i/$totalChunks Chunks uploaded (16 MB each)');
+        '<p class="text-gray-600">Encrypting and uploading file... $i/$totalChunks Chunks uploaded (16 MB each)</p>');
   }
 
   int internalI = 0;

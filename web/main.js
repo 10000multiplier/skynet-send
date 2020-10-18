@@ -3585,7 +3585,7 @@ if(J.bd(m).a5(m,"#"))m=C.a.am(m,1)
 if(m.length!==0){if(C.a.a5(m,P.f5("[0-9]"))){J.aB(document.querySelector(n),o,new F.ad())
 window.location.href="https://siasky.net/CACxu3qIoxiXQdyDBmrcS7dkC4sGzz4NrXpReKnehKEwFQ/index.html#"+m
 return}s=document
-J.aB(s.querySelector(n),"Downloading file index...",new F.ad())
+J.aB(s.querySelector(n),'<p class="text-gray-600">Downloading file index...</p>',new F.ad())
 r=C.a.b8(m,"-")
 if(C.a.p(m,0,r)==="a"){J.aB(s.querySelector(n),o,new F.ad())
 window.location.href="https://siasky.net/CADnRQe4AztQnaDkwPaBP6G3vofZzYaaikE5246uZadXiQ/index.html#"+m
@@ -3636,7 +3636,7 @@ n=new O.cu((p&&C.d).M(p,0,32))
 m=C.d.M(p,32,48)
 P.J(m,"bytes",t.w)
 l=document
-J.aB(l.querySelector("#output"),"Decrypting file index...",new F.ad())
+J.aB(l.querySelector("#output"),'<p class="text-gray-600">Decrypting file index...</p>',new F.ad())
 k=t.cF
 a1=k
 a2=C.y
@@ -3650,7 +3650,7 @@ h=H.o([],t.cM)
 g=H.E(i.i(0,"totalchunks"))
 f=M.pG(i.i(0,"filesize"))
 e=H.e(i.i(0,"filename"))+" ("+f+") \u2022"
-k=e+" Downloading and decrypting chunk 1 of "+H.e(g)+"..."
+k='<p class="text-gray-600">'+e+" Downloading and decrypting chunk 1 of "+H.e(g)+"...</p>"
 J.aB(l.querySelector("#output"),k,new F.ad())
 d=a0.a=0
 m=J.aA(t.bV.a(j.i(0,"chunks"))),l=t.z,k=t.P
@@ -3739,7 +3739,7 @@ return P.kF(r)},
 cG:function(a1){var s=0,r=P.Z(t.z),q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0
 var $async$cG=P.Q(function(a2,a3){if(a2===1)return P.W(a3,r)
 while(true)switch(s){case 0:a=document
-J.aB(a.querySelector("#output"),"Encrypting and uploading file...",new F.ad())
+J.aB(a.querySelector("#output"),'<p class="text-gray-600">Encrypting and uploading file...</p>',new F.ad())
 p=new A.cO(C.K,new D.cZ(C.L))
 o=new Uint8Array(32)
 N.kI(o,null)
@@ -3757,7 +3757,7 @@ s=3
 return P.z(F.cJ(a1.size,g),$async$cG)
 case 3:f=a3
 P.bv(f)
-J.aB(a.querySelector("#output"),"Encrypting and uploading chunk index...",new F.ad())
+J.aB(a.querySelector("#output"),'<p class="text-gray-600">Encrypting and uploading chunk index...</p>',new F.ad())
 i=t.b7.h("a7.S").a(C.y.f9(P.kc(["chunks",f,"chunkNonces",$.kG,"metadata",h],j,i)))
 a0=F
 s=5
@@ -3778,7 +3778,7 @@ case 8:for(l=m.a,k=l.length,d=0;d<k;++d)C.b.l(i,l[d])
 t.Q.h("a7.S").a(i)
 c=C.x.gU().I(i)
 b=H.e(window.location.protocol)+"//"+H.e(window.location.host)+H.e(window.location.pathname)+"#b-"+H.e(e)+"+"+c
-l="Secure Download Link for "+H.e(a1.name)+': <a href="'+b+'">'+b+"</a>"
+l='Secure Download Link for <span class="font-semibold">'+H.e(a1.name)+'</span>:<br><br><a class="text-base text-gray-600 leading-normal hover:underline" href="'+b+'">'+b+"</a>"
 J.aB(a.querySelector("#output"),l,new F.ad())
 case 1:return P.X(q,r)}})
 return P.Y($async$cG,r)},
@@ -3834,7 +3834,7 @@ c=i.r
 c=b+H.e((c&&C.b).i(c,d.i(e,14)))
 i=i.r
 P.bv("send "+(c+H.e((i&&C.b).i(i,d.i(e,15)))))
-d="Encrypting and uploading first chunk... "+j+" Chunks total (16 MB each)"
+d='<p class="text-gray-600">Encrypting and uploading first chunk... '+j+" Chunks total (16 MB each)</p>"
 J.aB(document.querySelector("#output"),d,new F.ad())
 a=P.kd(j,new F.k_(),!0,h)
 m=new F.jZ(a,j)
@@ -8202,7 +8202,7 @@ $1:function(a){var s
 t.aL.a(a)
 s=this.a.files
 if(s.length<1)throw H.a(P.ew(null))
-J.aB(document.querySelector("#output"),"Loading file...",new F.ad())
+J.aB(document.querySelector("#output"),'<p class="text-gray-600">Loading file...</p>',new F.ad())
 F.cG((s&&C.ae).gap(s))},
 $S:47}
 F.ad.prototype={
@@ -8232,11 +8232,11 @@ s=1
 break}if(k===m-1){k=p.x
 l=W.l0(n,H.kx(k.i(0,"type")))
 k=H.A(k.i(0,"filename"))
-n='<a id="downloadLink">Save File '+H.e(k)+"</a>"
+n='<div class="flex justify-between"><a class="text-base leading-normal text-gray-800 py-2 px-4">'+H.e(k)+'</a><a id="downloadLink" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"><svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>Save File</a></div>'
 J.aB(document.querySelector("#output"),n,new F.ad())
 n=window.document.querySelector("#downloadLink")
 n.setAttribute("href",(self.URL||self.webkitURL).createObjectURL(l))
-n.setAttribute("download",k)}else{k=p.y+" Downloading and decrypting chunk "+(k+2)+" of "+m+"..."
+n.setAttribute("download",k)}else{k='<p class="text-gray-600">'+p.y+" Downloading and decrypting chunk "+(k+2)+" of "+m+"...</p>"
 J.aB(document.querySelector("#output"),k,new F.ad())}++p.a.a
 case 1:return P.X(q,r)}})
 return P.Y($async$$1,r)},
@@ -8276,7 +8276,7 @@ break
 case 3:C.b.m(n.a,b,h)
 k=$.hk+1
 $.hk=k
-k="Encrypting and uploading file... "+k+"/"+n.b+" Chunks uploaded (16 MB each)"
+k='<p class="text-gray-600">Encrypting and uploading file... '+k+"/"+n.b+" Chunks uploaded (16 MB each)</p>"
 J.aB(document.querySelector("#output"),k,new F.ad())
 return P.X(null,r)
 case 1:return P.W(p,r)}})
